@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FLX Fire Zone">
+<title>FLX Fire Zone</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--o:#ff6a00;--b:#00d4ff;--p:#a259ff;--bg:#07070d;--c:#14141f;--tx:#eee;--hd:#0d0d16}
+[data-theme=day]{--bg:#f2f3f8;--c:#fff;--tx:#1a1a24;--hd:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Rajdhani,Arial,sans-serif;background:var(--bg);color:var(--tx);padding:64px 0 74px;font-size:17px;transition:background .3s}
+.f{font-family:Orbitron,Arial,sans-serif;font-weight:800;letter-spacing:2px}
+header{position:fixed;top:0;left:0;right:0;height:56px;background:var(--hd);border-bottom:2px solid var(--p);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:20}
+#mb{background:none;border:none;color:var(--b);font-size:30px}
+.br{display:flex;align-items:center;gap:8px}
+.mk{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--o),var(--p));display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px var(--p)}
+.lg{font-family:Orbitron,Arial,sans-serif;font-weight:800;font-size:22px;color:var(--o);text-shadow:0 0 10px var(--o)}
+#dr{position:fixed;top:56px;left:0;bottom:0;width:80%;max-width:310px;background:var(--hd);border-right:2px solid var(--b);transform:translateX(-105%);transition:transform .25s;z-index:15;overflow-y:auto}
+#dr.open{transform:none}
+#dr a,#dr button{display:block;width:100%;text-align:left;padding:15px 20px;color:var(--tx);background:none;border:none;border-bottom:1px solid #8883;font:700 17px Rajdhani,Arial;text-decoration:none}
+#dr i,nav i{font-style:normal;margin-right:8px}
+.pg{display:none;padding:16px}.pg.on{display:block}
+h2{color:var(--o);margin-bottom:12px;font-family:Orbitron,Arial,sans-serif;font-size:19px}
+.cd{background:var(--c);border:1px solid #8883;border-left:4px solid var(--b);border-radius:10px;padding:14px;margin-bottom:12px;line-height:1.5}
+.cd b{color:var(--p)}
+.hero{text-align:center;padding:30px 12px;border:1px solid var(--p);border-radius:14px;margin-bottom:14px;background:var(--c);box-shadow:0 0 22px #a259ff44}
+.hero .lg{font-size:34px}
+.bt{display:block;text-align:center;padding:14px;margin-top:12px;background:var(--o);color:#000;font-weight:700;text-decoration:none;border-radius:10px;border:none;width:100%;font-size:18px;font-family:inherit}
+.bt.tg{background:#2aabee;color:#fff}
+.rk{display:flex;justify-content:space-between;padding:10px 4px;border-bottom:1px solid #8883}
+nav{position:fixed;bottom:0;left:0;right:0;height:62px;background:var(--hd);border-top:2px solid var(--p);display:flex;z-index:20}
+nav button{flex:1;background:none;border:none;color:#999;font:700 13px Rajdhani,Arial}
+nav button i{display:block;margin:0;font-size:20px}
+nav button.on{color:var(--o)}
+#w{position:fixed;inset:0;background:#000;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:opacity .5s}
+#wt{color:var(--o);font-size:28px;min-height:72px;text-shadow:0 0 14px var(--o)}
+#wb{margin-top:30px;padding:14px 46px;font:700 20px Rajdhani,Arial;color:#000;background:linear-gradient(90deg,var(--o),var(--p));border:none;border-radius:30px;opacity:0;transition:opacity .6s}
+</style></head><body>
+
+<div id="w"><div id="wt" class="f"></div><button id="wb"></button></div>
+
+<header>
+<button id="mb">☰</button>
+<div class="br"><span class="mk">🔥</span><span class="lg">FLX</span></div>
+</header>
+
+<div id="dr">
+<a data-go="home"><i>🏠</i><span data-k="home"></span></a>
+<a data-go="tips"><i>🎯</i><span data-k="tips"></span></a>
+<a data-go="tour"><i>🏆</i><span data-k="tour"></span></a>
+<a data-go="rank"><i>📊</i><span data-k="rank"></span></a>
+<a data-go="squad"><i>🤝</i><span data-k="squad"></span></a>
+<a data-go="contact"><i>💬</i><span data-k="contact"></span></a>
+<a data-go="about"><i>ℹ️</i><span data-k="about"></span></a>
+<button id="bEn"><i>🌐</i>English</button>
+<button id="bBn"><i>🌐</i>বাংলা</button>
+<button id="bTh"><i>🌗</i><span data-k="theme"></span> ☀️/🌙</button>
+</div>
+
+<div id="home" class="pg on">
+<div class="hero"><div class="lg">FLX Fire Zone</div><p data-k="tag"></p></div>
+<div class="cd"><b data-k="why"></b><br><span data-k="whyT"></span></div>
+<div class="cd"><b data-k="today"></b><br><span id="dt"></span></div>
+<a class="bt" data-go="contact" data-k="join"></a>
+</div>
+
+<div id="tips" class="pg"><h2 data-k="tips"></h2><div id="tl"></div></div>
+
+<div id="tour" class="pg"><h2 data-k="tour"></h2>
+<div class="cd"><b>FLX Cup — Season 1</b><br><span data-k="tourD"></span></div></div>
+
+<div id="rank" class="pg"><h2 data-k="rank"></h2>
+<div class="cd">
+<div class="rk"><span>1 · Player One</span><span>1250</span></div>
+<div class="rk"><span>2 · Player Two</span><span>1120</span></div>
+<div class="rk"><span>3 · Player Three</span><span>980</span></div>
+</div><div class="cd" data-k="rankN"></div></div>
+
+<div id="squad" class="pg"><h2 data-k="squad"></h2>
+<div class="cd" data-k="squadB"></div>
+<a class="bt tg" href="https://t.me/flxzon" target="_blank" data-k="tg"></a></div>
+
+<div id="contact" class="pg"><h2 data-k="contact"></h2>
+<div class="cd" data-k="contactB"></div>
+<a class="bt tg" href="https://t.me/flxzon" target="_blank" data-k="tg"></a></div>
+
+<div id="about" class="pg"><h2 data-k="about"></h2>
+<div class="cd" data-k="aboutB"></div>
+<div class="cd"><span data-k="made"></span> <b>FLX</b></div></div>
+
+<nav>
+<button data-go="home" class="on"><i>🏠</i><span data-k="home"></span></button>
+<button data-go="tips"><i>🎯</i><span data-k="tips"></span></button>
+<button data-go="tour"><i>🏆</i><span data-k="tour"></span></button>
+<button data-go="rank"><i>📊</i><span data-k="rank"></span></button>
+<button data-go="contact"><i>💬</i><span data-k="contact"></span></button>
+</nav>
+
+<script>
+var D={
+en:{welcome:"Welcome to FLX Fire Zone",enter:"Enter",home:"Home",tips:"Tips",tour:"Tournament",rank:"Ranking",squad:"Find Squad",contact:"Contact",about:"About",theme:"Theme",tag:"Bangladeshi Free Fire gamers' community",why:"Why join?",whyT:"News, gameplay tips, tournaments and squad mates, all in one place.",today:"Tip of the day",join:"Join the community",tourD:"Date coming soon. Fair play only: no cheats or hacks.",rankN:"These are sample names.",squadB:"Join our Telegram channel and share your play style and timing.",contactB:"Join our community, chat, and get tournament news.",tg:"Join on Telegram",aboutB:"FLX Fire Zone is a community of Bangladeshi Free Fire players who play fair and learn together.",made:"Created by"},
+bn:{welcome:"FLX ফায়ার জোনে স্বাগতম",enter:"প্রবেশ করো",home:"হোম",tips:"টিপস",tour:"টুর্নামেন্ট",rank:"র‍্যাঙ্কিং",squad:"স্কোয়াড খোঁজো",contact:"যোগাযোগ",about:"আমাদের সম্পর্কে",theme:"থিম",tag:"বাংলাদেশি ফ্রি ফায়ার গেমারদের কমিউনিটি",why:"কেন যোগ দেবে?",whyT:"খবর, খেলার টিপস, টুর্নামেন্ট আর সঙ্গী খেলোয়াড়, সব এক জায়গায়।",today:"আজকের টিপ",join:"কমিউনিটিতে যোগ দাও",tourD:"তারিখ শীঘ্রই জানানো হবে। শুধু আইনি খেলা, কোনো চিট বা হ্যাক নয়।",rankN:"এগুলো নমুনা নাম।",squadB:"আমাদের টেলিগ্রাম চ্যানেলে ঢুকে তোমার খেলার ধরন আর সময় জানাও।",contactB:"কমিউনিটিতে যোগ দাও, আড্ডা দাও, টুর্নামেন্টের খবর পাও।",tg:"টেলিগ্রামে যোগ দাও",aboutB:"FLX ফায়ার জোন বাংলাদেশি ফ্রি ফায়ার খেলোয়াড়দের কমিউনিটি, যেখানে সবাই নিয়ম মেনে খেলে আর একসাথে শেখে।",made:"তৈরি করেছেন"}};
+var T=[
+["Land away from hot drops early so you can loot safely.","শুরুতে ভিড়ের জায়গা এড়িয়ে নিরাপদে লুট করো।"],
+["Check the safe zone on the map before you move.","চলার আগে ম্যাপে সেফ জোন দেখে নাও।"],
+["Use cover. Never run across open ground.","আড়াল ব্যবহার করো, খোলা মাঠে দৌড়াবে না।"],
+["Keep your sensitivity settings steady and practise in training.","সেনসিটিভিটি ঠিক রাখো, ট্রেনিংয়ে অনুশীলন করো।"],
+["Ping enemy positions so your squad knows.","শত্রুর অবস্থান পিন করে স্কোয়াডকে জানাও।"],
+["Carry enough healing items and heal behind cover.","যথেষ্ট হিলিং আইটেম রাখো, আড়ালে গিয়ে হিল করো।"],
+["Pick a character skill that fits your squad role.","স্কোয়াডে তোমার ভূমিকা অনুযায়ী ক্যারেক্টার বেছে নাও।"],
+["Use headphones to hear footsteps.","পায়ের শব্দ শুনতে হেডফোন ব্যবহার করো।"],
+["In the final zone, play position, not kills.","শেষ জোনে কিল নয়, অবস্থানের দিকে নজর দাও।"],
+["Re-loot after fights and keep gloo walls ready.","লড়াইয়ের পর আবার লুট করো, গ্লু ওয়াল রেডি রাখো।"],
+["Rotate with vehicles, but park behind cover.","গাড়িতে জোন বদলাও, তবে আড়ালে পার্ক করো।"],
+["Review your matches to spot mistakes.","নিজের ম্যাচ দেখে ভুল খুঁজে বের করো।"],
+["Take breaks. Tired players make mistakes.","বিরতি নাও, ক্লান্ত হলে ভুল বাড়ে।"],
+["Respect your teammates and play fair.","সতীর্থদের সম্মান করো, সৎভাবে খেলো।"],
+["Never use cheats. You risk a permanent ban.","কখনো চিট ব্যবহার করবে না, স্থায়ী ব্যান হতে পারে।"]];
+function gs(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function ss(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+var lang=gs('lang')||'en',th=gs('th');
+if(!th){var h=new Date().getHours();th=(h>=18||h<6)?'night':'day'}
+function $(s){return document.querySelectorAll(s)}
+function ap(){
+document.documentElement.setAttribute('data-theme',th);
+$('[data-k]').forEach(function(e){e.textContent=D[lang][e.dataset.k]});
+document.getElementById('wb').textContent=D[lang].enter;
+var i=lang=='en'?0:1,n=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5)%T.length;
+document.getElementById('dt').textContent=T[n][i];
+document.getElementById('tl').innerHTML=T.map(function(t,j){return '<div class="cd"><b>'+(j+1)+'.</b> '+t[i]+'</div>'}).join('');
+}
+function go(id){
+$('.pg').forEach(function(p){p.classList.remove('on')});
+document.getElementById(id).classList.add('on');
+$('nav button').forEach(function(b){b.classList.toggle('on',b.dataset.go==id)});
+document.getElementById('dr').classList.remove('open');
+window.scrollTo(0,0)}
+$('[data-go]').forEach(function(e){e.onclick=function(){go(e.dataset.go)}});
+document.getElementById('mb').onclick=function(){document.getElementById('dr').classList.toggle('open')};
+document.getElementById('bEn').onclick=function(){lang='en';ss('lang',lang);ap()};
+document.getElementById('bBn').onclick=function(){lang='bn';ss('lang',lang);ap()};
+document.getElementById('bTh').onclick=function(){th=th=='day'?'night':'day';ss('th',th);ap()};
+ap();
+var w=document.getElementById('w'),wt=document.getElementById('wt'),txt=D[lang].welcome,k=0;
+var iv=setInterval(function(){k++;wt.textContent=txt.slice(0,k);if(k>=txt.length){clearInterval(iv);document.getElementById('wb').style.opacity=1}},55);
+w.onclick=function(){w.style.opacity=0;setTimeout(function(){w.style.display='none'},500)};
+</script></body></html>
